@@ -8,7 +8,7 @@ export default function HomeRouter() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<LogIn />} />
+          <Route path="/" element={<Collection />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Collection" element={<Collection />} />

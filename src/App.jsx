@@ -10,8 +10,6 @@ function App() {
     <>
       <Header />
       <HomeRouter />
-      {/*
-      <Todo />*/}
       <Footer />
     </>
   );
