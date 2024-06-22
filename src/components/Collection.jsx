@@ -5,28 +5,28 @@ import { Link } from 'react-router-dom'
 import PopUpCard from './PopUpCard'
 import loading from "../img/loading.gif"
 import Home from "./Home";
+import { getData } from "../api/api";
 import '../styles/Collection.css'
-import axios from "axios";
+
 
 // get data by api
 export default function Collection() {
     const [collection, setCollection] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    useEffect( () =>{
+    useEffect( () => {
    async function getDataFromApi() {
     try {
-         const res = await axios.get("https://667256d76ca902ae11afe79a.mockapi.io/api/v1/store");
-         setCollection(res.data);
+         const collectionData = await getData()
+         setCollection(collectionData);
          setIsLoading(false);
-        
+         
     } catch (error) {
         console.log(error);
     }
     }
-
     getDataFromApi()}, []);
-    
-    {/*  <div id="logControl"> {true ? <div>
+
+   {/*   <div id="logControl"> {true ? <div>
                <button>Log out</button>
                </div> : 'you need to login'}</div>*/}
     return (
@@ -34,7 +34,7 @@ export default function Collection() {
              <div id="sideBar"><Link to="/LogIn">
                 <button className="logOut"><PersonIcon className="logOutIcon" /> Log out  </button>
             </Link>
-            </div><Home />
+            </div><Home /> 
             <div id='containerDiv'>
                 {isLoading ? (<div className="loading"><img src={loading} alt=""/>Loading…</div>) : ( 
                 <div> {collection.map(item => (

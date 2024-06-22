@@ -1,9 +1,14 @@
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../styles/Collection.css";
+import { useState } from "react";
 
 export default function Card(props) {
   const { pic, name,  category, price, brand,model } = props;
+  const [cart, setCart] = useState([])
+  const addToCart= (item) => {
+     setCart([...cart,item])
+  }
 
   return (
     <>
